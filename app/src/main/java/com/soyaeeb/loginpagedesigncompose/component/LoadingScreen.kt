@@ -11,18 +11,10 @@ import kotlin.time.seconds
 
 @Composable
 fun LoadingScreen() {
-    var show by remember { mutableStateOf(true) }
-    LaunchedEffect(Unit) {
-        delay(100000L)
-        show = false
-    }
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        if(show){
-            CircularProgressIndicator()
-        }
-
+        CircularProgressIndicator()
     }
 }

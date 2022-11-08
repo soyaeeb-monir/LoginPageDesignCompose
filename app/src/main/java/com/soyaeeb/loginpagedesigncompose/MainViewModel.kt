@@ -44,14 +44,14 @@ class MainViewModel @Inject constructor() : ViewModel() {
 
     init {
         action = {
-            when(it){
+            when (it) {
                 is MainUiAction.LoginAction -> {
-                    _visibleScreenState.value = Screen.LOADING
-                   viewModelScope.launch(Dispatchers.Unconfined) {
-                       delay(50000L)
-                   }
-                   sentEvent(MainUiEvent.ShowToastMessage(R.string.login_success))
-                    _visibleScreenState.value = Screen.HOME
+                    viewModelScope.launch {
+                        _visibleScreenState.value = Screen.LOADING
+                        delay(5000L)
+                        sentEvent(MainUiEvent.ShowToastMessage(R.string.login_success))
+                        _visibleScreenState.value = Screen.HOME
+                    }
                 }
             }
         }
